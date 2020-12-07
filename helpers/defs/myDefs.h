@@ -19,7 +19,7 @@
  * @brief Header file containing common definitions for the repository.
  *
  * This file will contain types, enums, and defines that can be used
- *  anywhere througout the repository.
+ *  anywhere throughout the repository.
  */
  
 #ifndef MY_DEFS_H
