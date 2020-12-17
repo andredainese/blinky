@@ -1,0 +1,87 @@
+---
+
+:project:
+  :use_exceptions: FALSE
+  :use_test_preprocessor: TRUE
+  :use_auxiliary_dependencies: TRUE
+  :use_deep_dependencies: TRUE
+  :build_root: build
+  :test_file_prefix: test_
+  :which_ceedling: ../../../../../tests/ceedling
+  :default_tasks:
+    - test:all
+    
+:plugins:
+  :load_paths:
+    - ../../../../../tests/ceedling/plugins
+  :enabled:
+    - stdout_pretty_tests_report
+    - module_generator
+    - fake_function_framework
+
+:paths:
+  :test:
+    - +:tests/
+  :source:
+    - "#{ENV['REPOSITORY_PATH']}/tests/examples/wdayToStr/source"
+  :support:
+    - "#{ENV['REPOSITORY_PATH']}/helpers/defs"
+    - "#{ENV['REPOSITORY_PATH']}/helpers/debug"
+    - "#{ENV['REPOSITORY_PATH']}/tests/helpers"
+
+:defines:
+  # in order to add common defines:
+  #  1) remove the trailing [] from the :common: section
+  #  2) add entries to the :common: section (e.g. :test: has TEST defined)
+  :commmon: &common_defines []
+  :test:
+    - *common_defines
+    - TEST
+  :test_preprocess:
+    - *common_defines
+    - TEST
+
+:flags:
+  :release:
+    :compile:
+      :*:
+      - -O1
+      - -Wall
+  :test:
+    :compile:
+      :*:
+      - -O1
+      - -Wall
+
+:extension:
+  :executable: .out
+
+:environment:
+
+:cmock:
+  :mock_prefix: mock_
+  :when_no_prototypes: :warn
+  :enforce_strict_ordering: TRUE
+  :plugins:
+    - :ignore
+    - :callback
+  :treat_as:
+    uint8:    HEX8
+    uint16:   HEX16
+    uint32:   UINT32
+    int8:     INT8
+    bool:     UINT8
+
+:gcov:
+    :html_report_type: basic
+
+:libraries:
+  :placement: :end
+  :flag: "${1}"  # or "-L ${1}" for example
+  :common: &common_libraries []
+  :test:
+    - *common_libraries
+  :release:
+    - *common_libraries
+
+...
