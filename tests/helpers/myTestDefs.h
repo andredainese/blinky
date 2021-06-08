@@ -33,5 +33,18 @@
 /*******************************************************************************
  *  PUBLIC DEFINITIONS - MACROS
  ******************************************************************************/
+/**
+ * @brief Declare a test not being possible. Test is ignored and a notification
+ *          about this is given when tests are executed.
+ */
+#define TEST_NOT_POSSIBLE()     TEST_IGNORE_MESSAGE("Cannot perform this test.")
+
+/**
+ * @brief Declare a test not being possible if given pointer is NULL.
+ */
+#define TEST_NOT_POSSIBLE_IF_NULL(PTR)                                         \
+{                                                                              \
+  if(PTR == NULL) { TEST_IGNORE_MESSAGE("Cannot perform this test."); }        \
+}
 
 #endif
