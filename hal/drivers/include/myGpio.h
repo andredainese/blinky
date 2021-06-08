@@ -107,4 +107,14 @@ myGpioLvl_t myGpio_Get(myGpioPin_t pin);
  */
 myRet_t myGpio_Set(myGpioPin_t pin, myGpioLvl_t lvl);
 
+/*******************************************************************************
+ *  PUBLIC FUNCTIONS / ROUTINES - TEST PURPOSES
+ ******************************************************************************/
+#ifdef TEST
+/**
+ * @brief Resets driver's internal logic and its variables.
+ */
+void myGpio_Reset(void);
+#endif
+
 #endif

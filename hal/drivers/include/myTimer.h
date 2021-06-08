@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2020 by Andre F. N. Dainese
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, version 3.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
@@ -22,7 +22,7 @@
  *  A timer driver provides routines for using timer peripherals for time
  *    counting operations.
  */
- 
+
 #ifndef MY_TIMER_H
 #define MY_TIMER_H
 
@@ -78,5 +78,15 @@ myRet_t myTimer_Init(myTimer_t * timer, myTimerPars_t * pars);
  *          will eventually be called.
  */
 myRet_t myTimer_Start(myTimer_t timer, uint32_t period, myCbk_t cbk);
+
+/*******************************************************************************
+ *  PUBLIC FUNCTIONS / ROUTINES - TEST PURPOSES
+ ******************************************************************************/
+#ifdef TEST
+/**
+ * @brief Resets driver's internal logic and its variables.
+ */
+void myTimer_Reset(void);
+#endif
 
 #endif
